@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel Escolar Dinâmico</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <header>
+    <h1>Painel Escolar Dinâmico</h1>
+    <p>Organize seus dados, acompanhe notas e visualize resultados de forma prática</p>
+  </header>
+
+  <main class="layout">
+    <!-- Coluna principal -->
+    <section class="col-acao">
+
+      <article class="cartao">
+        <h2>Informações da Turma</h2>
+        <form id="form-dados" class="grade-2" data-help="Aqui você define os dados gerais do boletim">
+          <label>Aluno
+            <input id="aluno" type="text" required placeholder="Exemplo: Maria Silva"
+              data-help="Nome completo do estudante">
+          </label>
+
+          <label>Professor
+            <input id="professor" type="text" required placeholder="Exemplo: João Pereira"
+              data-help="Nome do professor responsável">
+          </label>
+
+          <label>Turma
+            <input id="turma" type="text" placeholder="Exemplo: 3º Ano A"
+              data-help="Informe a turma ou sala do aluno">
+          </label>
+
+          <label>Ano letivo
+            <input id="ano" type="number" min="2000" max="2100" value="2025"
+              data-help="Ano correspondente ao boletim">
+          </label>
+
+          <button type="submit" data-help="Atualiza a identificação do painel">Atualizar Identificação</button>
+        </form>
+
+        <p id="identificacao" class="ident" data-help="Exibe os dados básicos do boletim">
+          Aluno não informado, Professor não informado, Turma não informada, Ano 2025
+        </p>
+      </article>
+
+      <article class="cartao">
+        <h2>Lançamento de Matérias</h2>
+        <form id="form-itens" class="grade-4" data-help="Adicione matérias, notas, peso e faltas">
+          <label>Disciplina
+            <input id="materia" type="text" required placeholder="Exemplo: Matemática"
+              data-help="Nome da disciplina">
+          </label>
+
+          <label>Nota
+            <input id="nota" type="number" min="0" max="10" step="0.1" required placeholder="0 a 10"
+              data-help="Nota de 0 a 10">
+          </label>
+
+          <label>Peso
+            <input id="peso" type="number" min="1" step="1" value="1" required
+              data-help="Peso da disciplina para cálculo da média ponderada">
+          </label>
+
+          <label>Faltas
+            <input id="faltas" type="number" min="0" step="1" value="0"
+              data-help="Número de ausências na disciplina">
+          </label>
+
+          <button type="submit" data-help="Lança uma nova disciplina na tabela">Lançar Matéria</button>
+          <button type="button" id="limpar" data-help="Apaga todas as disciplinas">Limpar Tudo</button>
+        </form>
+
+        <div class="tabela">
+          <table id="tabela" aria-describedby="ajuda-tabela" data-help="Tabela com matérias e resultados">
+            <thead>
+              <tr>
+                <th>Disciplina</th>
+                <th>Nota</th>
+                <th>Peso</th>
+                <th>Faltas</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  Média simples: <strong id="media-simples">0,00</strong> |
+                  Média ponderada: <strong id="media-pond">0,00</strong> |
+                  Faltas totais: <strong id="soma-faltas">0</strong>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <p id="ajuda-tabela" class="ajuda">
+          Regras: nota ≥ 6 aprovado | 4 ≤ nota &lt; 6 recuperação | nota &lt; 4 reprovado
+        </p>
+      </article>
+    </section>
+
+    <!-- Coluna lateral -->
+    <aside class="col-explicacao">
+      <img src="alunosvelhos.jpeg" width="380" height="250" style="border-radius: 20px; ">
+
+      <div class="painel">
+        <h2>Guia de Ações</h2>
+        <section aria-live="polite" class="bloco">
+          <h3 id="exp-titulo">Nenhum item selecionado</h3>
+          <p id="exp-texto">Clique em um campo ou botão para ver sua função.</p>
+        </section>
+
+        <section aria-live="polite" class="bloco">
+          <h3>Última atividade</h3>
+          <p id="exp-acao">As interações aparecerão aqui.</p>
+        </section>
+
+        <section class="bloco">
+          <h3>Código relacionado</h3>
+          <pre id="exp-codigo"><code>// Aguarde uma ação para visualizar o código</code></pre>
+        </section>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <small>Projeto educacional desenvolvido apenas com HTML, CSS e JavaScript</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
